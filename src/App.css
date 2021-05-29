@@ -677,7 +677,6 @@ label {
   border: black solid;
   justify-content: space-around;
   align-items: flex-end;
-  margin-left: 50px;
 }
 .cont:before {
   position: absolute;
@@ -709,7 +708,7 @@ label {
 .labels {
   font-size: 15px;
   position: absolute;
-  left: -40px;
+  left: -35px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -717,13 +716,13 @@ label {
   align-items: flex-end;
 }
 .text-cont {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   height: 100%;
   position: absolute;
   font-size: 20px;
-  left: -110px;
+  left: -115px;
 }
 .text {
   transform: rotate(-90deg);
@@ -766,6 +765,9 @@ label {
   .cont {
     width: 450px;
     height: 350px;
+  }
+  .text-cont {
+    display: flex;
   }
 }
 
