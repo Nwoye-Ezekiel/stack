@@ -10,8 +10,9 @@ function Tasks() {
   let localTasks = JSON.parse(localStorage.getItem("tasksObj"));
   const [popDelete, setPopDelete] = useState(false);
   const [popForm, setPopForm] = useState(false);
+  const [removeHeader, setRemoveHeader] = useState(false);
   const [updateList, setUpdateList] = useState(true);
-  const [removeList, setRemoveList] = useState(true);
+  const [removeList, setRemoveList] = useState(false);
   const [taskList, setTaskList] = useState(localTasks);
   const [temp, setTemp] = useState([]);
   let [width, setWidth] = useState(false);
@@ -26,6 +27,34 @@ function Tasks() {
   window.scrollTo(0, 0);
 
   window.addEventListener("resize", reportWindowSize);
+
+  function popDeleteHandler(obj) {
+    setTemp(obj);
+    setRemoveList(true);
+    setPopDelete(true);
+    setRemoveHeader(true);
+  }
+  function popFormHandler() {
+    setPopForm(true);
+  }
+  function cancelDeleteHandler() {
+    setRemoveHeader(false);
+    setRemoveList(false);
+    setPopDelete(false);
+  }
+  function updateState() {
+    setUpdateList(!updateList);
+  }
+  function cancel() {
+    setPopForm(false);
+    setRemoveHeader(false);
+    setRemoveList(false);
+  }
+  function headerHandler() {
+    setRemoveList(true);
+    setRemoveHeader(true);
+    setPopForm(!popForm);
+  }
 
   function countAndStore(list) {
     updateState();
@@ -75,26 +104,6 @@ function Tasks() {
     updateState();
   }
 
-  function popDeleteHandler(obj) {
-    setTemp(obj);
-    setRemoveList(!removeList);
-    setPopDelete(!popDelete);
-  }
-  function popFormHandler() {
-    setRemoveList(!removeList);
-    setPopForm(!popForm);
-  }
-  function cancelDeleteHandler() {
-    setRemoveList(!removeList);
-    setPopDelete(!popDelete);
-  }
-  function updateState() {
-    setUpdateList(!updateList);
-  }
-  function cancel() {
-    setRemoveList(!removeList);
-    setPopForm(!popForm);
-  }
   function checkbox(event, id) {
     let position;
     [...taskList].map((task, index) => {
@@ -185,8 +194,7 @@ function Tasks() {
     localStorage.setItem("tasksObj", JSON.stringify(storageTasks));
 
     setTaskList(newArray);
-    setRemoveList(!removeList);
-    setPopDelete(!popDelete);
+    cancelDeleteHandler();
     countAndStore(newArray);
   };
 
@@ -391,11 +399,14 @@ function Tasks() {
           <Side style="side-left-close" />
         </>
       )}
-
       <div className="main">
-        <Header popForm={popFormHandler} />
+        {taskList.length < 1 ? (
+          <Center popForm={popFormHandler} />
+        ) : (
+          <>{removeHeader ? null : <Header popForm={headerHandler} />}</>
+        )}
 
-        {removeList ? (
+        {removeList ? null : (
           <Item
             taskList={taskList}
             popDelete={popDeleteHandler}
@@ -403,14 +414,13 @@ function Tasks() {
             confirmDelete={confirmDelete}
             cancelDelete={cancelDeleteHandler}
           />
-        ) : null}
-        {taskList.length < 1 ? <Center popForm={popFormHandler} /> : null}
+        )}
         {popDelete ? (
           <DeleteItem cancelDelete={cancelDeleteHandler} id={temp.id}>
             {temp.taskName}
           </DeleteItem>
         ) : null}
-        {popForm ? <TaskForm cancelForm={popFormHandler} /> : null}
+        {popForm ? <TaskForm cancelForm={cancel} /> : null}
       </div>
     </div>
   );
