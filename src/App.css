@@ -65,7 +65,7 @@ body {
 .side {
   display: flex;
   flex-direction: column;
-  transform: translateX(-120%);
+  transform: translateX(-130%);
   position: fixed;
   top: 0;
   left: 0;
@@ -240,7 +240,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 122px);
+  /* height: calc(100vh - 122px); */
   padding-top: 60px;
   width: 90%;
   margin: 0 auto;
@@ -569,7 +569,7 @@ label {
   z-index: 111;
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 110px);
   top: -20px;
   display: flex;
   justify-content: center;
@@ -744,7 +744,7 @@ label {
 }
 .side-left-close {
   width: 30%;
-  transform: translateX(-120%);
+  transform: translateX(-150%);
 }
 
 @media screen and (min-width: 800px) {
