@@ -227,7 +227,7 @@ function Tasks() {
             <div onClick={() => popDelete(task)} className="task-icon">
               <i
                 className="fas fa-trash-alt"
-                style={{ color: "#000", fontSize: "16.9px", cursor: "pointer" }}
+                style={{ color: "#000", fontSize: "17.5px", cursor: "pointer" }}
               ></i>
             </div>
           </div>
@@ -308,7 +308,7 @@ function Tasks() {
               type="text"
               id="comment"
               name="comment"
-              placeholder="Make a comment note"
+              placeholder="Make a comment"
             />
             <br />
             <label for="dueDate">Due date</label>
