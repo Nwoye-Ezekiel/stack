@@ -23,6 +23,7 @@ function Tasks() {
       setWidth(false);
     }
   }
+  window.scrollTo(0, 0);
 
   window.addEventListener("resize", reportWindowSize);
 

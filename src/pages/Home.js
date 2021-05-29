@@ -6,6 +6,7 @@ import Cta from "../components/Cta";
 import Navbar from "../components/Navbar";
 
 function Home() {
+  window.scrollTo(0, 0);
   return (
     <div>
       <Navbar homeColor="#f58434"/>

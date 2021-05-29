@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import load from "../images/load.svg";
 
 function About() {
+  window.scrollTo(0, 0);
   return (
     <div className="about-cont">
       <Navbar aboutColor="#f58434" />

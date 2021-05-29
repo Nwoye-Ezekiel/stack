@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 
 function Stats() {
+  window.scrollTo(0, 0);
   if (
     localStorage.getItem("totalObj") == null ||
     localStorage.getItem("completedObj") == null ||
