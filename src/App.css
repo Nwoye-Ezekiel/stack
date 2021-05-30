@@ -77,6 +77,7 @@ body {
   box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.25);
   height: 100vh;
 }
+
 .navbar-links {
   display: none;
 }
@@ -170,6 +171,9 @@ body {
 .btn-secondary:hover {
   background-color: rgb(231, 231, 231);
 }
+.btn-remove {
+  display: none;
+}
 .card {
   position: relative;
   display: flex;
@@ -231,16 +235,13 @@ body {
   background: #f58634;
   padding: 60px 0;
 }
-.to-white {
-  color: white;
-}
 .hero-outer-cont {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 60px);
+  min-height: calc(100vh - 60px);
   padding-top: 130px;
   width: 90%;
   margin: 0 auto;
@@ -271,6 +272,9 @@ body {
   height: 200px;
   margin-bottom: 20px;
 }
+.about-image {
+  height: 200px;
+}
 .content-cont {
   display: flex;
   flex-direction: column;
@@ -281,12 +285,16 @@ body {
   text-align: center;
   font-size: 33px;
   font-family: font-b;
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 5px;
 }
 .content {
   text-align: center;
   color: #666666;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
+}
+.to-white {
+  color: white;
 }
 .navbar {
   width: 100%;
@@ -498,6 +506,29 @@ label {
   width: calc(100% - 150px);
   margin-right: auto;
   text-align: left;
+}
+.anchor {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  outline: none;
+  bottom: 20px;
+  left: calc(50% - 22.5px);
+  width: 45px;
+  height: 40px;
+  animation: updown 1s infinite;
+  cursor: pointer;
+  -webkit-text-stroke: 3px #1b1e22;
+  text-align: center;
+  padding: 0 5px;
+  color: #979da5;
+  border: none;
+  font-size: 35px;
+}
+.anchor:hover {
+  color: white;
 }
 .date {
   font-size: 14px;
@@ -784,6 +815,10 @@ label {
     justify-content: center;
     align-items: center;
   }
+  .hero-inner-cont {
+    width: 60%;
+    margin-right: auto;
+  }
   .information-card {
     width: 400px;
   }
@@ -794,5 +829,9 @@ label {
   .cont {
     width: 500px;
     height: 400px;
+  }
+  .about-image {
+    height: 350px;
+    margin-left: 20px;
   }
 }

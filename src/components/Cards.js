@@ -17,7 +17,7 @@ function Cards() {
 
         <Card source={date} card_header="Expiry Date">
           Timing is very essenstial when working and on that note, Time Stack
-          offers this feature to keep you right on track and utilizing every
+          offers this feature to keep you right on track, while utilizing every
           time possible.
         </Card>
 

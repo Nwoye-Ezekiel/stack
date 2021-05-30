@@ -12,7 +12,7 @@ function Hero() {
         </div>
         <p className="content hero-content">
           Time Stack is a time management app that helps to increase your
-          productivity by organizing and managing your time.
+          productivity level by organizing and managing your time.
         </p>
         <Button children="Get Started" link="/Tasks"></Button>
       </div>

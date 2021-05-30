@@ -1,20 +1,24 @@
 import React from "react";
-import Button from "./Button";
+import ideas from "../images/ideas.svg";
 
-function Section(props) {
+function Section() {
   return (
-    <div className="section-cont">
-      <img className="image" src={props.source} alt="Thinking" />
-      <div className="content-cont">
-        <div className="heading">{props.heading}</div>
-        <p className="content">{props.children}</p>
+    <div>
+      <div className="line"></div>
+      <div className="section-cont">
+        <img className="image" src={ideas} alt="Thinking" />
+        <div className="content-cont">
+          <div className="heading">Why choose Time Stack?</div>
+          <p className="content">
+            This app provides amazing features that assists you in managing your
+            time well. All these features makes Time Stack stand out, making it
+            a better option in choosing a good time management app. We know you
+            are excited already and so without further ado, let's walk you through
+            the features.
+          </p>
+        </div>
       </div>
-      <Button
-        link={props.link}
-        children={props.btn_name}
-        buttonStyle={props.btn_style}
-        buttonSize={props.btn_size}
-      ></Button>
+      <div className="line"></div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const STYLES = ["btn-primary", "btn-secondary"];
+const STYLES = ["btn-primary", "btn-secondary", "btn-remove"];
 const SIZES = ["btn-medium", "btn-long", "btn-short"];
 
 const Button = ({

@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import load from "../images/load.svg";
+import clock from "../images/clock.png";
 
 function About() {
   window.scrollTo(0, 0);
@@ -8,15 +8,17 @@ function About() {
     <div className="about-cont">
       <Navbar aboutColor="#f58434" />
       <div className="hero-outer-cont">
-        <img className="image hero-image" src={load} alt="Efficient Dveloper" />
+        <img className="about-image" src={clock} alt="Efficient Dveloper" />
         <div className="hero-inner-cont">
           <div className="heading hero-heading">Time Stack</div>
           <p className="content hero-content">
-            "At vero eos et accusamus et iusto odio dignissimos ducimus qui
-            blanditiis praesentium voluptatum deleniti atque corrupti quos
-            dolores et quas molestias excepturi sint occaecati cupiditate non
-            provident, similique sunt in culpa qui officia deserunt mollitia
-            animi, id est laborum et dolorum fuga."
+            Time Stack is a time management platform that serves as an effective
+            tool for bridging the productivity gap. With good time management,
+            this goal can achieved and Time Stack is the man for the job. With
+            the amazing features it provides, you can easily create your tasks,
+            set an expiry date for completion with a specified priority level
+            and you get to see the statistics of all the tasks you have, either
+            completed or uncompleted with a well detailed information.
           </p>
         </div>
       </div>
@@ -25,3 +27,4 @@ function About() {
 }
 
 export default About;
+    
