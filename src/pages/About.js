@@ -7,9 +7,9 @@ function About() {
   return (
     <div className="about-cont">
       <Navbar aboutColor="#f58434" />
-      <div className="hero-outer-cont">
+      <div className="outer-cont about-outer-cont">
         <img className="about-image" src={clock} alt="Efficient Dveloper" />
-        <div className="hero-inner-cont">
+        <div className="inner-cont">
           <div className="heading hero-heading">Time Stack</div>
           <p className="content hero-content">
             Time Stack is a time management platform that serves as an effective

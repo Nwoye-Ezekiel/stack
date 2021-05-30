@@ -235,18 +235,24 @@ body {
   background: #f58634;
   padding: 60px 0;
 }
-.hero-outer-cont {
+.outer-cont {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 60px);
+
   padding-top: 130px;
   width: 90%;
   margin: 0 auto;
 }
-.hero-inner-cont {
+.hero-outer-cont {
+  height: calc(100vh - 60px);
+}
+.about-outer-cont {
+  min-height: calc(100vh - 60px);
+}
+.inner-cont {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -810,12 +816,12 @@ label {
 }
 
 @media only screen and (min-width: 1000px) {
-  .hero-outer-cont {
+  .outer-cont {
     flex-direction: row-reverse;
     justify-content: center;
     align-items: center;
   }
-  .hero-inner-cont {
+  .inner-cont {
     width: 60%;
     margin-right: auto;
   }
