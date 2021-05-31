@@ -136,6 +136,7 @@ function Tasks() {
   function addTask(val) {
     let date = new Date(val.dueDate).toLocaleString();
     let first = date.slice(-11, -6);
+
     let second = date.slice(-3);
     console.log("First: ", first);
     console.log("Second: ", second);
@@ -152,13 +153,13 @@ function Tasks() {
     const task = {
       taskName: val.taskName,
       comment: val.comment,
-      date: day + "/" + month + "/" + year + "," + " " + first + second,
+      date: `${day}/${month}/${year}, ${first}${second}`,
       priority: val.priority,
       checkBoxState: false,
       checked: false,
       id: Math.floor(Math.random() * 10000),
     };
-
+    console.log(first);
     let tasksObj = task;
     let storageTasks = JSON.parse(localStorage.getItem("tasksObj"));
     storageTasks.push(tasksObj);
@@ -306,10 +307,6 @@ function Tasks() {
     let formPriority = "";
     const check = (e) => (formPriority = e.target.value);
 
-    // let tzoffset = new Date().getTimezoneOffset() * 60000;
-    // let localISOTime = new Date(Date.now() - tzoffset).toISOString();
-    // localISOTime = localISOTime.slice(0, -3);
-
     const nameCounterHandler = (e, name) => {
       let counter = 40 - e.target.value.length;
       setNameCounter(counter);
@@ -401,7 +398,6 @@ function Tasks() {
               type="datetime-local"
               id="dueDate"
               name="dueDate"
-              placeholder="Enter an expiry date"
             />
             <br />
             <label className="priority-label">Priority</label>
