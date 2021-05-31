@@ -3,6 +3,8 @@ import Button from "../components/Button";
 import Navbar from "../components/Navbar";
 import Side from "../components/Side";
 
+window.scrollTo(0, 0);
+
 function Tasks() {
   if (localStorage.getItem("tasksObj") == null) {
     localStorage.setItem("tasksObj", "[]");
@@ -17,6 +19,17 @@ function Tasks() {
   const [temp, setTemp] = useState([]);
   let [width, setWidth] = useState(false);
 
+  // checkDate = (date) => {
+  //   let now = new Date();
+  //   let due = new Date(date);
+
+  //   if (now >= due) {
+  //     return "due";
+  //   } else {
+  //     return "not-due";
+  //   }
+  // };
+
   function reportWindowSize() {
     if (window.innerWidth >= 800) {
       setWidth(true);
@@ -24,7 +37,6 @@ function Tasks() {
       setWidth(false);
     }
   }
-  window.scrollTo(0, 0);
 
   window.addEventListener("resize", reportWindowSize);
 
@@ -125,7 +137,7 @@ function Tasks() {
     const task = {
       taskName: val.taskName,
       comment: val.comment,
-      date: val.dueDate,
+      date: new Date(val.dueDate).toLocaleString(),
       priority: val.priority,
       checkBoxState: false,
       checked: false,
@@ -213,6 +225,7 @@ function Tasks() {
   }
 
   function Item({ taskList, popDelete }) {
+    // checkDate()
     return taskList.map((task, index) => (
       <div className="item-cont">
         <div className="priority-card">{task.priority}</div>
@@ -254,10 +267,14 @@ function Tasks() {
             <div className="due-date-label">Due date:</div>
             {task.checked ? (
               <div className="due-date">
-                <del>{task.date}</del>
+                <span className="due-date-value">
+                  <del>{task.date}</del>
+                </span>
               </div>
             ) : (
-              <div className="due-date">{task.date}</div>
+              <div className="due-date">
+                <span className="due-date-value">{task.date}</span>
+              </div>
             )}
           </div>
         </div>
@@ -328,7 +345,7 @@ function Tasks() {
                 formDueDate = dueDate;
               }}
               className="input"
-              type="date"
+              type="datetime-local"
               id="dueDate"
               name="dueDate"
             />

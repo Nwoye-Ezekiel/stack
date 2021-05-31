@@ -1,17 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const STYLES = ["btn-primary", "btn-secondary", "btn-remove"];
+const STYLES = ["btn-primary", "btn-secondary"];
 const SIZES = ["btn-medium", "btn-long", "btn-short"];
 
-const Button = ({
-  children,
-  type,
-  onClick,
-  buttonStyle,
-  buttonSize,
-  link
-}) => {
+const Button = ({ children, buttonStyle, buttonSize, link }) => {
   const checkButtonStyle = STYLES.includes(buttonStyle)
     ? buttonStyle
     : STYLES[0];
@@ -20,9 +13,7 @@ const Button = ({
   return (
     <Link to={link}>
       <button
-        className={`btn ${checkButtonStyle} ${checkButtonSize}`}
-        onClick={onClick}
-        type={type}
+        className={`btn cta-btn ${checkButtonStyle} ${checkButtonSize}`}
       >
         {children}
       </button>

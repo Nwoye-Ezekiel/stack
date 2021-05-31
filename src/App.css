@@ -166,7 +166,7 @@ body {
   background-color: rgb(206, 103, 30);
 }
 .btn-primary::active {
-  background-color: rgb(214, 109, 33);
+  background-color: #d66d21;
 }
 .btn-secondary:hover {
   background-color: rgb(231, 231, 231);
@@ -183,7 +183,7 @@ body {
   width: 300px;
   padding: 40px 22px;
   background: #fffbf8;
-  box-shadow: 0px 5px 10px rgba(176, 176, 176, 0.25);
+  box-shadow: 0px 5px 10px rgb(136 136 136 / 25%);
   border-radius: 5px;
   margin: 10px;
 }
@@ -195,14 +195,14 @@ body {
 }
 .card-header {
   text-align: center;
-  font-family: font-s;
-  font-size: 23px;
+  font-family: font-b;
+  font-size: 24px;
   margin-bottom: 10px;
 }
 .card-content {
   text-align: center;
-  font-size: 16px;
-  color: #666666;
+  font-size: 17px;
+  color: #565050;
   margin-bottom: 20px;
 }
 .read-more {
@@ -234,6 +234,9 @@ body {
   color: white;
   background: #f58634;
   padding: 60px 0;
+}
+.cta-btn {
+  margin-top: 20px;
 }
 .outer-cont {
   position: relative;
@@ -276,7 +279,6 @@ body {
   margin-left: auto;
   margin-right: auto;
   height: 200px;
-  margin-bottom: 20px;
 }
 .about-image {
   height: 200px;
@@ -292,12 +294,12 @@ body {
   font-size: 33px;
   font-family: font-b;
   margin-top: 20px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  line-height: 2.5rem;
 }
 .content {
   text-align: center;
-  color: #666666;
-  margin-bottom: 50px;
+  color: #565050;
 }
 .to-white {
   color: white;
@@ -385,6 +387,8 @@ form {
   padding: 10px;
   margin-bottom: 20px;
   outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 label {
   font-size: 18px;
@@ -540,8 +544,11 @@ label {
   font-size: 14px;
   margin: 5px 10px;
   color: #f58434;
-  width: 85px;
+  width: 80px;
   text-align: right;
+}
+.due-date-value {
+  color: #6d6d6d;
 }
 .chart-cont {
   display: flex;
@@ -625,6 +632,7 @@ label {
   font-family: font-b;
   font-size: 33px;
   margin-bottom: 20px;
+  margin-top: -10px;
 }
 .stats-cont {
   padding-bottom: 60px;

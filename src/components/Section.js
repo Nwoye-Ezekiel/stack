@@ -1,12 +1,12 @@
 import React from "react";
-import ideas from "../images/ideas.svg";
+import team from "../images/team.svg";
 
 function Section() {
   return (
     <div>
       <div className="line"></div>
       <div className="section-cont">
-        <img className="image" src={ideas} alt="Thinking" />
+        <img className="image" src={team} alt="team" />
         <div className="content-cont">
           <div className="heading">Why choose Time Stack?</div>
           <p className="content">
