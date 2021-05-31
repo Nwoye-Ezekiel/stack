@@ -289,6 +289,11 @@ function Tasks() {
     let formPriority = "";
     const check = (e) => (formPriority = e.target.value);
 
+    let tzoffset = new Date().getTimezoneOffset() * 60000;
+    let localISOTime = new Date(Date.now() - tzoffset)
+      .toISOString()
+      .slice(0, -1);
+
     return (
       <div className="middle">
         <form
@@ -349,7 +354,7 @@ function Tasks() {
               type="datetime-local"
               id="dueDate"
               name="dueDate"
-              placeholder="Enter an expiry date"
+              value={localISOTime.slice(0, 16)}
             />
             <br />
             <label className="priority-label">Priority</label>
