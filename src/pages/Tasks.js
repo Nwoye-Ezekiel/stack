@@ -134,10 +134,25 @@ function Tasks() {
   }
 
   function addTask(val) {
+    let date = new Date(val.dueDate).toLocaleString();
+    let first = date.slice(-11, -6);
+    let second = date.slice(-3);
+    console.log("First: ", first);
+    console.log("Second: ", second);
+    let month = date.indexOf("/");
+    let afterMonth = date.slice(month + 1);
+    month = date.slice(0, month);
+
+    let day = afterMonth.indexOf("/");
+    let afterDay = date.slice(day + 1);
+    day = afterMonth.slice(0, day);
+
+    let year = afterDay.slice(2, 6);
+
     const task = {
       taskName: val.taskName,
       comment: val.comment,
-      date: new Date(val.dueDate).toLocaleString(),
+      date: day + "/" + month + "/" + year + "," + " " + first + second,
       priority: val.priority,
       checkBoxState: false,
       checked: false,
@@ -249,7 +264,7 @@ function Tasks() {
             <div onClick={() => popDelete(task)} className="task-icon">
               <i
                 className="fas fa-trash-alt"
-                style={{ color: "#000", fontSize: "17.5px", cursor: "pointer" }}
+                style={{ color: "#000", fontSize: "18px", cursor: "pointer" }}
               ></i>
             </div>
           </div>
@@ -283,6 +298,8 @@ function Tasks() {
   }
 
   function TaskForm(props) {
+    let [nameCounter, setNameCounter] = useState(40);
+    let [commentCounter, setCommentCounter] = useState(120);
     let formName;
     let formComment;
     let formDueDate;
@@ -290,9 +307,17 @@ function Tasks() {
     const check = (e) => (formPriority = e.target.value);
 
     let tzoffset = new Date().getTimezoneOffset() * 60000;
-    let localISOTime = new Date(Date.now() - tzoffset)
-      .toISOString()
-      .slice(0, -1);
+    let localISOTime = new Date(Date.now() - tzoffset).toISOString();
+    localISOTime = localISOTime.slice(0, -3);
+
+    const nameCounterHandler = (e, name) => {
+      let counter = 40 - e.target.value.length;
+      setNameCounter(counter);
+    };
+    const commentCounterHandler = (e, comment) => {
+      let counter = 120 - e.target.value.length;
+      setCommentCounter(counter);
+    };
 
     return (
       <div className="middle">
@@ -311,12 +336,17 @@ function Tasks() {
             formDueDate.value = "";
             cancel();
           }}
-          novalidate
         >
           <div className="form-cont">
             <div className="form-header">New Task</div>
-            <label for="taskName">Task Name</label>
-            <br />
+            <div className="label-cont">
+              <div
+                className={"word-count " + (nameCounter <= 10 ? "warning" : "")}
+              >
+                {nameCounter}
+              </div>
+              <label for="taskName">Task Name</label>
+            </div>
             <input
               required
               ref={(taskName) => {
@@ -325,12 +355,24 @@ function Tasks() {
               className="input"
               type="text"
               id="taskName"
+              // value={formName.value}
               name="TaskName"
               placeholder="Enter a task name"
+              maxLength="40"
+              onChange={(event) => nameCounterHandler(event)}
             />
             <br />
-            <label for="comment">Comment</label>
-            <br />
+            <div className="label-cont">
+              <div
+                className={
+                  "word-count " + (commentCounter <= 10 ? "warning" : "")
+                }
+              >
+                {commentCounter}
+              </div>
+              <label for="comment">Comment</label>
+            </div>
+
             <input
               required
               ref={(taskComment) => {
@@ -340,8 +382,12 @@ function Tasks() {
               type="text"
               id="comment"
               name="comment"
+              // value=""
               placeholder="Make a comment"
+              maxLength="120"
+              onChange={(event) => commentCounterHandler(event)}
             />
+
             <br />
             <label for="dueDate">Due date</label>
             <br />
@@ -353,6 +399,7 @@ function Tasks() {
               className="input"
               type="datetime-local"
               id="dueDate"
+              value=""
               name="dueDate"
               value={localISOTime.slice(0, 16)}
             />

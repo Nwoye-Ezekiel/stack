@@ -254,6 +254,7 @@ body {
 }
 .about-outer-cont {
   min-height: calc(100vh - 60px);
+    margin-bottom: 60px;
 }
 .inner-cont {
   display: flex;
@@ -576,6 +577,18 @@ label {
 .about_image {
   margin-top: 20px;
   height: 400px;
+}
+.label-cont {
+  position: relative;
+}
+.word-count {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 16px;
+}
+.warning{
+  color: #f58634;
 }
 .delete-wrapper {
   text-align: center;
