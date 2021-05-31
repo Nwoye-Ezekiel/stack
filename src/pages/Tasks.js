@@ -75,24 +75,24 @@ function Tasks() {
     const totalTasks = list.length;
     const completed = list.filter((task) => task.checked);
     const completedHigh = [...completed].filter(
-      (task) => task.priority === "high"
+      (task) => task.priority === "High"
     ).length;
     const completedMedium = [...completed].filter(
-      (task) => task.priority === "medium"
+      (task) => task.priority === "Medium"
     ).length;
     const completedLow = [...completed].filter(
-      (task) => task.priority === "low"
+      (task) => task.priority === "Low"
     ).length;
 
     const uncompleted = [...list].filter((task) => !task.checked);
     const uncompletedHigh = [...uncompleted].filter(
-      (task) => task.priority === "high"
+      (task) => task.priority === "High"
     ).length;
     const uncompletedMedium = [...uncompleted].filter(
-      (task) => task.priority === "medium"
+      (task) => task.priority === "Medium"
     ).length;
     const uncompletedLow = [...uncompleted].filter(
-      (task) => task.priority === "low"
+      (task) => task.priority === "Low"
     ).length;
 
     let completedObj = {
@@ -306,6 +306,7 @@ function Tasks() {
             formDueDate.value = "";
             cancel();
           }}
+          novalidate
         >
           <div className="form-cont">
             <div className="form-header">New Task</div>
@@ -348,6 +349,7 @@ function Tasks() {
               type="datetime-local"
               id="dueDate"
               name="dueDate"
+              placeholder="Enter an expiry date"
             />
             <br />
             <label className="priority-label">Priority</label>
@@ -358,11 +360,11 @@ function Tasks() {
                   required
                   onClick={check}
                   type="radio"
-                  id="high"
+                  id="High"
                   name="priority"
-                  value="high"
+                  value="High"
                 />
-                <label className="radio-label" for="high">
+                <label className="radio-label" for="High">
                   High
                 </label>
               </div>
@@ -371,11 +373,11 @@ function Tasks() {
                   required
                   onClick={check}
                   type="radio"
-                  id="medium"
+                  id="Medium"
                   name="priority"
-                  value="medium"
+                  value="Medium"
                 />
-                <label className="radio-label" for="medium">
+                <label className="radio-label" for="Medium">
                   Medium
                 </label>
               </div>
@@ -384,11 +386,11 @@ function Tasks() {
                   required
                   onClick={check}
                   type="radio"
-                  id="low"
+                  id="Low"
                   name="priority"
-                  value="low"
+                  value="Low"
                 />
-                <label className="radio-label" for="low">
+                <label className="radio-label" for="Low">
                   Low
                 </label>
               </div>
