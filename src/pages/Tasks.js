@@ -306,9 +306,9 @@ function Tasks() {
     let formPriority = "";
     const check = (e) => (formPriority = e.target.value);
 
-    let tzoffset = new Date().getTimezoneOffset() * 60000;
-    let localISOTime = new Date(Date.now() - tzoffset).toISOString();
-    localISOTime = localISOTime.slice(0, -3);
+    // let tzoffset = new Date().getTimezoneOffset() * 60000;
+    // let localISOTime = new Date(Date.now() - tzoffset).toISOString();
+    // localISOTime = localISOTime.slice(0, -3);
 
     const nameCounterHandler = (e, name) => {
       let counter = 40 - e.target.value.length;
@@ -336,6 +336,7 @@ function Tasks() {
             formDueDate.value = "";
             cancel();
           }}
+          noValidate
         >
           <div className="form-cont">
             <div className="form-header">New Task</div>
@@ -399,9 +400,7 @@ function Tasks() {
               className="input"
               type="datetime-local"
               id="dueDate"
-              value=""
               name="dueDate"
-              value={localISOTime.slice(0, 16)}
             />
             <br />
             <label className="priority-label">Priority</label>
