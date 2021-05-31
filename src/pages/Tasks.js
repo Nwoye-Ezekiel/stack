@@ -401,6 +401,7 @@ function Tasks() {
               type="datetime-local"
               id="dueDate"
               name="dueDate"
+              placeholder="Enter an expiry date"
             />
             <br />
             <label className="priority-label">Priority</label>
