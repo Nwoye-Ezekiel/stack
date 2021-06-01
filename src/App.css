@@ -255,7 +255,7 @@ body {
 }
 .about-outer-cont {
   min-height: calc(100vh - 60px);
-    margin-bottom: 60px;
+  margin-bottom: 60px;
 }
 .inner-cont {
   display: flex;
@@ -470,6 +470,20 @@ label {
   background: #f58634;
   font-size: 14px;
 }
+.due-card {
+  z-index: -1;
+  top: -22px;
+  left: 0;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 5px 15px;
+  height: 26px;
+  color: white;
+  background: #f58634;
+  font-size: 14px;
+}
 .item-top {
   display: flex;
   justify-content: space-between;
@@ -546,10 +560,16 @@ label {
   font-size: 14px;
   margin: 5px 10px;
   color: #f58434;
-  width: 80px;
+  width: 150px;
   text-align: right;
 }
 .due-date-value {
+  color: #6d6d6d;
+}
+.expired {
+  color: #f58434;
+}
+.not-expired {
   color: #6d6d6d;
 }
 .chart-cont {
@@ -588,7 +608,7 @@ label {
   bottom: 0;
   font-size: 16px;
 }
-.warning{
+.warning {
   color: #f58634;
 }
 .delete-wrapper {
@@ -826,7 +846,6 @@ label {
     margin-top: 0;
   }
 }
-
 @media only screen and (min-width: 700px) {
   .cont {
     width: 450px;
@@ -836,7 +855,6 @@ label {
     display: flex;
   }
 }
-
 @media only screen and (min-width: 1000px) {
   .outer-cont {
     flex-direction: row-reverse;

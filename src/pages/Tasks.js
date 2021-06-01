@@ -19,17 +19,6 @@ function Tasks() {
   const [temp, setTemp] = useState([]);
   let [width, setWidth] = useState(false);
 
-  // checkDate = (date) => {
-  //   let now = new Date();
-  //   let due = new Date(date);
-
-  //   if (now >= due) {
-  //     return "due";
-  //   } else {
-  //     return "not-due";
-  //   }
-  // };
-
   function reportWindowSize() {
     if (window.innerWidth >= 800) {
       setWidth(true);
@@ -37,7 +26,6 @@ function Tasks() {
       setWidth(false);
     }
   }
-
   window.addEventListener("resize", reportWindowSize);
 
   function popDeleteHandler(obj) {
@@ -132,34 +120,16 @@ function Tasks() {
     countAndStore([...taskList]);
     updateState();
   }
-
   function addTask(val) {
-    let date = new Date(val.dueDate).toLocaleString();
-    let first = date.slice(-11, -6);
-
-    let second = date.slice(-3);
-    console.log("First: ", first);
-    console.log("Second: ", second);
-    let month = date.indexOf("/");
-    let afterMonth = date.slice(month + 1);
-    month = date.slice(0, month);
-
-    let day = afterMonth.indexOf("/");
-    let afterDay = date.slice(day + 1);
-    day = afterMonth.slice(0, day);
-
-    let year = afterDay.slice(2, 6);
-
     const task = {
       taskName: val.taskName,
       comment: val.comment,
-      date: `${day}/${month}/${year}, ${first}${second}`,
+      date: val.dueDate,
       priority: val.priority,
       checkBoxState: false,
       checked: false,
       id: Math.floor(Math.random() * 10000),
     };
-    console.log(first);
     let tasksObj = task;
     let storageTasks = JSON.parse(localStorage.getItem("tasksObj"));
     storageTasks.push(tasksObj);
@@ -241,10 +211,53 @@ function Tasks() {
   }
 
   function Item({ taskList, popDelete }) {
-    // checkDate()
+    function checkDate(val) {
+      let now = new Date().toLocaleDateString();
+      let due = new Date(val).toLocaleDateString();
+      function format(val) {
+        let date = val;
+
+        let month = date.indexOf("/");
+        let afterMonth = date.slice(month + 1);
+        month = date.slice(0, month);
+
+        let day = afterMonth.indexOf("/");
+        let afterDay = afterMonth.slice(day + 1);
+        day = afterMonth.slice(0, day);
+
+        let year = afterDay.slice(0);
+        return {
+          day: day,
+          month: month,
+          year: year,
+        };
+      }
+      now = format(now);
+      due = format(due);
+      if (parseInt(due.year) < parseInt(now.year)) {
+        return true;
+      } else if (parseInt(due.year) === parseInt(now.year)) {
+        if (parseInt(due.month) == parseInt(now.month)) {
+          if (parseInt(due.day) == parseInt(now.day)) {
+            return true;
+          } else if (parseInt(due.day) < parseInt(now.day)) {
+            return true;
+          } else {
+            return false;
+          }
+        } else if (parseInt(due.month) < parseInt(now.month)) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    }
     return taskList.map((task, index) => (
       <div className="item-cont">
         <div className="priority-card">{task.priority}</div>
+        {checkDate(task.date) ? <div className="due-card">Due</div> : null}
         <div className="item-top">
           {task.checked ? (
             <div className="task-name">
@@ -283,13 +296,15 @@ function Tasks() {
             <div className="due-date-label">Due date:</div>
             {task.checked ? (
               <div className="due-date">
-                <span className="due-date-value">
-                  <del>{task.date}</del>
+                <span className={"due-date-value"}>
+                  <del>{new Date(task.date).toDateString()}</del>
                 </span>
               </div>
             ) : (
               <div className="due-date">
-                <span className="due-date-value">{task.date}</span>
+                <span className={"due-date-value"}>
+                  {new Date(task.date).toDateString()}
+                </span>
               </div>
             )}
           </div>
@@ -395,7 +410,7 @@ function Tasks() {
                 formDueDate = dueDate;
               }}
               className="input"
-              type="datetime-local"
+              type="date"
               id="dueDate"
               name="dueDate"
             />

@@ -21,7 +21,7 @@ function About() {
             completed or uncompleted with a well detailed information.
           </p>
         </div>
-      </div>
+      </div> 
     </div>
   );
 }
