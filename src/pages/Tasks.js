@@ -315,7 +315,7 @@ function Tasks() {
 
   function TaskForm(props) {
     let [nameCounter, setNameCounter] = useState(40);
-    let [commentCounter, setCommentCounter] = useState(120);
+    let [commentCounter, setCommentCounter] = useState(200);
     let formName;
     let formComment;
     let formDueDate;
@@ -327,7 +327,7 @@ function Tasks() {
       setNameCounter(counter);
     };
     const commentCounterHandler = (e, comment) => {
-      let counter = 120 - e.target.value.length;
+      let counter = 200 - e.target.value.length;
       setCommentCounter(counter);
     };
 
@@ -348,7 +348,6 @@ function Tasks() {
             formDueDate.value = "";
             cancel();
           }}
-          noValidate
         >
           <div className="form-cont">
             <div className="form-header">New Task</div>
@@ -368,7 +367,6 @@ function Tasks() {
               className="input"
               type="text"
               id="taskName"
-              // value={formName.value}
               name="TaskName"
               placeholder="Enter a task name"
               maxLength="40"
@@ -395,9 +393,8 @@ function Tasks() {
               type="text"
               id="comment"
               name="comment"
-              // value=""
               placeholder="Make a comment"
-              maxLength="120"
+              maxLength="200"
               onChange={(event) => commentCounterHandler(event)}
             />
 
