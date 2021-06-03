@@ -603,9 +603,10 @@ label {
 }
 .word-count {
   position: absolute;
+  color: #757582;
   right: 0;
   bottom: 0;
-  font-size: 16px;
+  font-size: 15px;
 }
 .warning {
   color: #f58634;
