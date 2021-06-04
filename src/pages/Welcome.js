@@ -1,23 +1,23 @@
-// import React, {useState} from "react";
-// import { Redirect } from "react-router-dom";
-// import Logo from "../images/clock.png";
+import React, {useState} from "react";
+import { Redirect } from "react-router-dom";
+import Logo from "../images/clock.png";
 
-// setTimeout(() => {
-//     console.log("Hello");
-//     <Redirect to="/about"/>
-// }, 2000);
+setTimeout(() => {
+    console.log("Hello");
+    <Redirect to="/about"/>
+}, 2000);
 
-// function Welcome() {
-//   return (
-//     <div className="welcome-cont">
-//       <img className="welcome-logo" src={Logo} />
-//       <div className="welcome-logo-name">Time Stack</div>
-//       <div className="welcome-slogan">The Time Management App</div>
-//     </div>
-//   );
-// }
+function Welcome() {
+  return (
+    <div className="welcome-cont">
+      <img className="welcome-logo" src={Logo} />
+      <div className="welcome-logo-name">Time Stack</div>
+      <div className="welcome-slogan">The Time Management App</div>
+    </div>
+  );
+}
 
-// export default Welcome;
+export default Welcome;
 
 
 

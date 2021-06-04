@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import Button from "../components/Button";
 import Navbar from "../components/Navbar";
 import Side from "../components/Side";
+import DeleteItem from "../components/DeleteItem";
+import CreateTask from "../components/CreateTask";
+import TasksHeader from "../components/TasksHeader";
+import TaskForm from "../components/TaskForm";
+import TaskItem from "../components/TaskItem";
 
 window.scrollTo(0, 0);
 
@@ -20,11 +24,7 @@ function Tasks() {
   let [width, setWidth] = useState(false);
 
   function reportWindowSize() {
-    if (window.innerWidth >= 800) {
-      setWidth(true);
-    } else {
-      setWidth(false);
-    }
+    window.innerWidth >= 800 ? setWidth(true) : setWidth(false);
   }
   window.addEventListener("resize", reportWindowSize);
 
@@ -139,44 +139,6 @@ function Tasks() {
     countAndStore([...taskList, task]);
     setTaskList(newTaskList);
   }
-  function Center(props) {
-    return (
-      <div className="middle center-cont">
-        <Button
-          onClick={props.popForm}
-          classSize="btn-long"
-          children="Create Task"
-        />
-      </div>
-    );
-  }
-
-  function DeleteItem(prop) {
-    return (
-      <div className="delete-main-cont middle">
-        <div className="delete-wrapper">
-          <div className="delete-task">{prop.children}</div>
-          <div className="divide"></div>
-          <div className="delete-cont">
-            <div className="question">
-              Are you sure you want to delete this task?
-            </div>
-            <div className="delete-buttons btn-cont">
-              <button
-                onClick={() => confirmDelete(prop.id)}
-                className="button button1"
-              >
-                Delete
-              </button>
-              <button onClick={prop.cancelDelete} className="button button2">
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   const confirmDelete = (id) => {
     let position;
@@ -196,278 +158,6 @@ function Tasks() {
     countAndStore(newArray);
   };
 
-  function Header(props) {
-    return (
-      <div className="tasks-header">
-        <div className="tasks-title">Tasks</div>
-        <div onClick={props.popForm} className="add-button">
-          <i
-            className="fas fa-plus-circle"
-            style={{ color: "#000", fontSize: "30px", cursor: "pointer" }}
-          ></i>
-        </div>
-      </div>
-    );
-  }
-
-  function Item({ taskList, popDelete }) {
-    function checkDate(val) {
-      let now = new Date().toLocaleDateString();
-      let due = new Date(val).toLocaleDateString();
-      function format(val) {
-        let date = val;
-
-        let month = date.indexOf("/");
-        let afterMonth = date.slice(month + 1);
-        month = date.slice(0, month);
-
-        let day = afterMonth.indexOf("/");
-        let afterDay = afterMonth.slice(day + 1);
-        day = afterMonth.slice(0, day);
-
-        let year = afterDay.slice(0);
-        return {
-          day: day,
-          month: month,
-          year: year,
-        };
-      }
-      now = format(now);
-      due = format(due);
-      if (parseInt(due.year) < parseInt(now.year)) {
-        return true;
-      } else if (parseInt(due.year) === parseInt(now.year)) {
-        if (parseInt(due.month) == parseInt(now.month)) {
-          if (parseInt(due.day) == parseInt(now.day)) {
-            return true;
-          } else if (parseInt(due.day) < parseInt(now.day)) {
-            return true;
-          } else {
-            return false;
-          }
-        } else if (parseInt(due.month) < parseInt(now.month)) {
-          return true;
-        } else {
-          return false;
-        }
-      } else {
-        return false;
-      }
-    }
-    return taskList.map((task, index) => (
-      <div className="item-cont">
-        <div className="priority-card">{task.priority}</div>
-        {checkDate(task.date) ? <div className="due-card">Due</div> : null}
-        <div className="item-top">
-          {task.checked ? (
-            <div className="task-name">
-              <del>{task.taskName}</del>
-            </div>
-          ) : (
-            <div className="task-name">{task.taskName}</div>
-          )}
-          <div className="task-icons">
-            <div className="task-icon">
-              <input
-                defaultChecked={task.checkBoxState}
-                onClick={(event) => checkbox(event, task.id)}
-                className="checkbox"
-                type="checkbox"
-              />
-            </div>
-            <div onClick={() => popDelete(task)} className="task-icon">
-              <i
-                className="fas fa-trash-alt"
-                style={{ color: "#000", fontSize: "18px", cursor: "pointer" }}
-              ></i>
-            </div>
-          </div>
-        </div>
-        <div className="divide"></div>
-        <div className="item-bottom">
-          {task.checked ? (
-            <div className="task-comment">
-              <del>{task.comment}</del>
-            </div>
-          ) : (
-            <div className="task-comment">{task.comment}</div>
-          )}
-          <div className="date">
-            <div className="due-date-label">Due date:</div>
-            {task.checked ? (
-              <div className="due-date">
-                <span className={"due-date-value"}>
-                  <del>{new Date(task.date).toDateString()}</del>
-                </span>
-              </div>
-            ) : (
-              <div className="due-date">
-                <span className={"due-date-value"}>
-                  {new Date(task.date).toDateString()}
-                </span>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    ));
-  }
-
-  function TaskForm(props) {
-    let [nameCounter, setNameCounter] = useState(40);
-    let [commentCounter, setCommentCounter] = useState(200);
-    let formName;
-    let formComment;
-    let formDueDate;
-    let formPriority = "";
-    const check = (e) => (formPriority = e.target.value);
-
-    const nameCounterHandler = (e, name) => {
-      let counter = 40 - e.target.value.length;
-      setNameCounter(counter);
-    };
-    const commentCounterHandler = (e, comment) => {
-      let counter = 200 - e.target.value.length;
-      setCommentCounter(counter);
-    };
-
-    return (
-      <div className="middle">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            let input = {
-              taskName: formName.value,
-              comment: formComment.value,
-              dueDate: formDueDate.value,
-              priority: formPriority,
-            };
-            addTask(input);
-            formName.value = "";
-            formComment.value = "";
-            formDueDate.value = "";
-            cancel();
-          }}
-        >
-          <div className="form-cont">
-            <div className="form-header">New Task</div>
-            <div className="label-cont">
-              <div
-                className={"word-count " + (nameCounter <= 10 ? "warning" : "")}
-              >
-                {nameCounter}
-              </div>
-              <label for="taskName">Task Name</label>
-            </div>
-            <input
-              required
-              ref={(taskName) => {
-                formName = taskName;
-              }}
-              className="input"
-              type="text"
-              id="taskName"
-              name="TaskName"
-              placeholder="Enter a task name"
-              maxLength="40"
-              onChange={(event) => nameCounterHandler(event)}
-            />
-            <br />
-            <div className="label-cont">
-              <div
-                className={
-                  "word-count " + (commentCounter <= 10 ? "warning" : "")
-                }
-              >
-                {commentCounter}
-              </div>
-              <label for="comment">Comment</label>
-            </div>
-
-            <input
-              required
-              ref={(taskComment) => {
-                formComment = taskComment;
-              }}
-              className="input"
-              type="text"
-              id="comment"
-              name="comment"
-              placeholder="Make a comment"
-              maxLength="200"
-              onChange={(event) => commentCounterHandler(event)}
-            />
-
-            <br />
-            <label for="dueDate">Due date</label>
-            <br />
-            <input
-              required
-              ref={(dueDate) => {
-                formDueDate = dueDate;
-              }}
-              className="input"
-              type="date"
-              id="dueDate"
-              name="dueDate"
-            />
-            <br />
-            <label className="priority-label">Priority</label>
-            <br />
-            <div className="radio-cont">
-              <div>
-                <input
-                  required
-                  onClick={check}
-                  type="radio"
-                  id="High"
-                  name="priority"
-                  value="High"
-                />
-                <label className="radio-label" for="High">
-                  High
-                </label>
-              </div>
-              <div>
-                <input
-                  required
-                  onClick={check}
-                  type="radio"
-                  id="Medium"
-                  name="priority"
-                  value="Medium"
-                />
-                <label className="radio-label" for="Medium">
-                  Medium
-                </label>
-              </div>
-              <div>
-                <input
-                  required
-                  onClick={check}
-                  type="radio"
-                  id="Low"
-                  name="priority"
-                  value="Low"
-                />
-                <label className="radio-label" for="Low">
-                  Low
-                </label>
-              </div>
-            </div>
-            <div className="btn-cont form-btn-cont">
-              <button type="submit" className="button button1">
-                Add
-              </button>
-              <button onClick={props.cancelForm} className="button button2">
-                Cancel
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-    );
-  }
   return (
     <div tasks-cont>
       {window.innerWidth >= 800 ? (
@@ -480,26 +170,29 @@ function Tasks() {
       )}
       <div className="main">
         {taskList.length < 1 ? (
-          <Center popForm={popFormHandler} />
+          <CreateTask popForm={popFormHandler} />
         ) : (
-          <>{removeHeader ? null : <Header popForm={headerHandler} />}</>
+          <>{removeHeader ? null : <TasksHeader popForm={headerHandler} />}</>
         )}
 
         {removeList ? null : (
-          <Item
+          <TaskItem
             taskList={taskList}
             popDelete={popDeleteHandler}
-            DeleteItem={DeleteItem}
-            confirmDelete={confirmDelete}
-            cancelDelete={cancelDeleteHandler}
+            checkbox={checkbox}
           />
         )}
         {popDelete ? (
-          <DeleteItem cancelDelete={cancelDeleteHandler} id={temp.id}>
-            {temp.taskName}
-          </DeleteItem>
+          <DeleteItem
+            confirmDelete={confirmDelete}
+            cancelDelete={cancelDeleteHandler}
+            id={temp.id}
+            name={temp.taskName}
+          />
         ) : null}
-        {popForm ? <TaskForm cancelForm={cancel} /> : null}
+        {popForm ? (
+          <TaskForm cancelForm={cancel} addTask={addTask} cancel={cancel} />
+        ) : null}
       </div>
     </div>
   );
