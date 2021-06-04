@@ -1,14 +1,11 @@
 import React from "react";
-import Button from "./Button";
 
-export default function CreateTask(props) {
+export default function CreateTask({ popForm }) {
   return (
     <div className="middle center-cont">
-      <Button
-        onClick={props.popForm}
-        classSize="btn-long"
-        children="Create Task"
-      />
+      <button className="btn cta-btn btn-primary btn-medium" onClick={popForm}>
+        Create Task
+      </button>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import celebration from "../images/celebration.svg";
-import Button from "./Button"
+import { Link } from "react-router-dom";
 
 function Cta() {
   return (
@@ -16,11 +16,11 @@ function Cta() {
             statistics of your tasks.
           </p>
         </div>
-        <Button
-          link="/Statistics"
-          children="Statistics"
-          buttonStyle="btn-secondary"
-        ></Button>
+        <Link to="/Statistics">
+          <button className="btn cta-btn btn-secondary btn-medium">
+            Statistics
+          </button>
+        </Link>
       </div>
     </div>
   );

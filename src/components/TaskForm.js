@@ -3,10 +3,10 @@ import React, { useState } from "react";
 export default function TaskForm({ cancelForm, addTask, cancel }) {
   let [nameCounter, setNameCounter] = useState(40);
   let [commentCounter, setCommentCounter] = useState(200);
-  let formName;
-  let formComment;
-  let formDueDate;
-  let formPriority = "";
+  let formName,
+    formComment,
+    formDueDate,
+    formPriority = "";
   const check = (e) => (formPriority = e.target.value);
 
   const nameCounterHandler = (e) => {

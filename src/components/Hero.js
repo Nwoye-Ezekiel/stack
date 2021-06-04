@@ -1,6 +1,6 @@
 import React from "react";
 import developer from "../images/developer.svg";
-import Button from "./Button";
+import { Link } from "react-router-dom";
 
 function Hero() {
   return (
@@ -14,7 +14,11 @@ function Hero() {
           Time Stack is a time management app that helps to increase your
           productivity level by organizing and managing your time.
         </p>
-        <Button children="Get Started" link="/Tasks"></Button>
+        <Link to="/Tasks">
+          <button className="btn cta-btn btn-primary btn-medium">
+            Get Started
+          </button>
+        </Link>
       </div>
     </div>
   );
