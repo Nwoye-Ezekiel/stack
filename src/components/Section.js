@@ -13,8 +13,8 @@ function Section() {
             This app provides amazing features that assists you in managing your
             time well. All these features makes Time Stack stand out, making it
             a better option in choosing a good time management app. We know you
-            are excited already and so without further ado, let's walk you through
-            the features.
+            are excited already and so without further ado, let's walk you
+            through the features.
           </p>
         </div>
       </div>
@@ -22,5 +22,4 @@ function Section() {
     </div>
   );
 }
-
 export default Section;
