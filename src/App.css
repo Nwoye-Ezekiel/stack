@@ -279,10 +279,7 @@ body {
 .image {
   margin-left: auto;
   margin-right: auto;
-  height: 200px;
-}
-.hero-image{
-  display: none;
+  height: 150px;
 }
 .about-image {
   height: 200px;
@@ -872,7 +869,6 @@ label {
     width: 400px;
   }
   .hero-image {
-    display: block;
     height: 350px;
     margin-left: 20px;
   }
