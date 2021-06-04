@@ -241,14 +241,14 @@ body {
 }
 .outer-cont {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  padding-top: 130px;
-  width: 90%;
-  margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    padding-top: 128px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .hero-outer-cont {
   height: calc(100vh - 60px);
