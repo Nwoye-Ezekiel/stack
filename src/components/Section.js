@@ -4,6 +4,7 @@ import team from "../images/team.svg";
 function Section() {
   return (
     <div>
+      <div className="line"></div>
       <div className="section-cont">
         <img className="image" src={team} alt="team" />
         <div className="content-cont">
