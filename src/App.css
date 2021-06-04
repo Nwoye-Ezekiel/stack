@@ -275,14 +275,13 @@ body {
   align-items: center;
   width: 90%;
   margin: 0 auto;
-  margin-top: 60px;
 }
 .image {
   margin-left: auto;
   margin-right: auto;
   height: 200px;
 }
-.hero-image {
+.hero-image{
   display: none;
 }
 .about-image {
@@ -875,7 +874,7 @@ label {
   .hero-image {
     display: block;
     height: 350px;
-    margin-left: 50px;
+    margin-left: 20px;
   }
   .cont {
     width: 500px;
