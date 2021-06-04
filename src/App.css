@@ -250,21 +250,12 @@ body {
   width: 90%;
   margin: 0 auto;
 }
-.hero-wrapper {
-  background-image: linear-gradient(45deg, #fffdbb, transparent);
-  padding-bottom: 60px;
-  width: 100%;
-}
 .hero-outer-cont {
   height: calc(100vh - 60px);
 }
-.about-wrapper {
-  background-image: linear-gradient(45deg, #fffdbb, transparent);
-  padding-bottom: 60px;
-  width: 100%;
-}
 .about-outer-cont {
   min-height: calc(100vh - 60px);
+  margin-bottom: 60px;
 }
 .inner-cont {
   display: flex;
